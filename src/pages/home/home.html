@@ -1,51 +1,62 @@
 <ion-header color='dark' no-border text-center #head>
-  <ion-navbar>
-    <ion-title><img src="assets/img/f.png"></ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title><img src="assets/img/f.png"></ion-title>
+    </ion-navbar>
 </ion-header>
 <ion-content no-padding hide-header [header]="head">
-  <div id='upper'>
- <ion-searchbar class='ionsearchbar' placeholder='Search for restaurants, cinemas, etc.'>
-</ion-searchbar>
-</div>
-<ion-grid justify-content-between text-center no-padding>
-  <ion-row>
-    <ion-col>
-      <button clear>
-        <img src="assets/img/store.png">
-         <p style='font-size:10px; text-transform: none; ' >Restaurants</p>
-      </button>
-    </ion-col>
-    <ion-col>
-        <button clear style='margin-top:2px;'>
-        <img src="assets/img/cinema.png">
-         <p style='font-size:10px; text-transform: none;' >Cinemas</p>
-      </button>
-    </ion-col>
-  <ion-col>
-     <button clear>
-        <img src="assets/img/administrator.png">
-         <p style='font-size:10px; text-transform: none;' >Working spaces</p>
-      </button>
-  </ion-col>
-  </ion-row>
-</ion-grid>
-<div style='background-color: #f6f6f6'>
-  <div *ngFor="let item of RestItems">
-  <ion-card>
-  <img [src]="item.Restaurant.avatar"/>
-  <ion-card-content>
-    <ion-card-title>
-      {{item.Restaurant.name}}
-      </ion-card-title>
-        <p style='float:right; margin-top:-10%;'> {{item.Region}}
-         <br>
-         {{item.Address}}
-         <br>
-      {{item.PhoneNumber}} 
-    </p>
-  </ion-card-content>
-</ion-card>
-  </div>
-  </div>
+    <!-- Here i am calling hide-header from the directives hide-header, no idea how it works i copied it -->
+    <div id='upper'>
+        <ion-searchbar class='ionsearchbar' placeholder='Search for restaurants, cinemas, etc.'>
+            <!-- This is for the searchbar, it has unwritten functions in the ts file but we're waiting on the backend for those-->
+        </ion-searchbar>
+    </div>
+    <ion-grid justify-content-between text-center no-padding>
+        <!-- making a grid for the icons, 1 row and 3 columns -->
+        <ion-row>
+            <ion-col>
+                <button clear>
+                    <!-- clear to make the button have a clear background -->
+                    <img src="assets/img/store.png">
+                    <p style='font-size:10px; text-transform: none; ' >Restaurants</p>
+                    <!-- text transform: none makes the test appear like this "Restaurants" not like the default this "RESTAURANTS" -->
+                </button>
+            </ion-col>
+            <ion-col>
+                <button clear style='margin-top:2px;'>
+                    <!-- margin top here to align the image with the others as the others had a clear background that is 2 pixels (i think) high -->
+                    <img src="assets/img/cinema.png">
+                    <p style='font-size:10px; text-transform: none;' >Cinemas</p>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button clear>
+                    <img src="assets/img/administrator.png">
+                    <p style='font-size:10px; text-transform: none;' >Working spaces</p>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <div style='background-color: #f6f6f6'>
+        <!-- the background color is a little darker than the default white -->
+        <div *ngFor="let item of RestItems">
+            <!-- RestItems is going to be an array with all the Restaurant/cafe/space/cinema basic information, like location, name, rating and maybe the best review -->
+            <!-- *ngFor is a for loop on the array items-->
+            <ion-item style='margin-bottom:-2%; background-color: #f6f6f6'>
+                <img style='width:80px; height:80px; margin-right:10px; float:left;' [src]="item.Restaurant.avatar"> <!-- i want the picture to float left and the location to float right -->
+                <div style='margin-left:5%;'>
+                    <h2>{{item.Restaurant.name}}</h2>
+                    <p>{{item.Stars}}</p>
+                </div>
+                <p style='float:right; margin-top:-5%;'> {{item.Region}}
+                    <br>
+                    {{item.Address}}
+                    <br>
+                    {{item.PhoneNumber}} 
+                </p>
+            </ion-item>
+            <div class="item item-text-wrap" padding-left>
+                <p> {{item.bestReview}} </p>
+            </div>
+        </div>
+    </div>
 </ion-content>

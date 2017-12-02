@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { HideHeaderDirective } from '../directives/headerscroll/headerscroll';
 
 @NgModule({
+  // ANY component/page/directive you make you HAVE to include it in the declarations AND up in the imports
   declarations: [
     MyApp,
     HomePage,
@@ -19,6 +20,7 @@ import { HideHeaderDirective } from '../directives/headerscroll/headerscroll';
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
+  // Same here for pages (i think)
   entryComponents: [
     MyApp,
     HomePage

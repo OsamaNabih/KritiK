@@ -9,7 +9,7 @@ export class HomePage {
 RestItems: any[];
 
   constructor(public navCtrl: NavController) {
-    
+    // This array will be filled by the backend API, in here i am going to make an API call and i will get this json in return
     this.RestItems = [
       {
         Restaurant: {
