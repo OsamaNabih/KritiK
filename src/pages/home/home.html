@@ -1,8 +1,13 @@
+
 <ion-header color='dark' no-border text-center #head>
     <ion-navbar>
+      <button ion-button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+    </button>
         <ion-title><img src="assets/img/f.png"></ion-title>
     </ion-navbar>
 </ion-header>
+
 <ion-content no-padding hide-header [header]="head">
     <!-- Here i am calling hide-header from the directives hide-header, no idea how it works i copied it -->
     <div id='upper'>
@@ -51,7 +56,7 @@
                     <br>
                     {{item.Address}}
                     <br>
-                    {{item.PhoneNumber}} 
+                    {{item.PhoneNumber}}
                 </p>
             </ion-item>
             <div class="item item-text-wrap" padding-left>
