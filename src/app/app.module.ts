@@ -8,13 +8,15 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { HideHeaderDirective } from '../directives/headerscroll/headerscroll';
 import { AddBusinessPage } from '../pages/add-business/add-business';
+import {RestaurantPage} from '../pages/restaurant/restaurant';
 @NgModule({
   // ANY component/page/directive you make you HAVE to include it in the declarations AND up in the imports
   declarations: [
     MyApp,
     HomePage,
     HideHeaderDirective,
-    AddBusinessPage
+    AddBusinessPage,
+    RestaurantPage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { AddBusinessPage } from '../pages/add-business/add-business';
   entryComponents: [
     MyApp,
     HomePage,
-    AddBusinessPage
+    AddBusinessPage,
+    RestaurantPage
   ],
   providers: [
     StatusBar,
@@ -34,3 +37,4 @@ import { AddBusinessPage } from '../pages/add-business/add-business';
   ]
 })
 export class AppModule {}
+IonicModule.forRoot(MyApp, { animate: false })

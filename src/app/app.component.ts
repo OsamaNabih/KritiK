@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { AddBusinessPage } from '../pages/add-business/add-business';
+import {RestaurantPage} from '../pages/restaurant/restaurant'
 @Component({
   templateUrl: 'app.html'
 })
@@ -14,8 +15,9 @@ export class MyApp {
 pages: Array<{title: string, component: any}>;
   constructor(public platform: Platform,public statusBar: StatusBar,public splashScreen: SplashScreen) {
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: AddBusinessPage }
+      { title: 'List', component: AddBusinessPage },
+      {title: 'Restaurant', component: RestaurantPage}
+
     ];
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

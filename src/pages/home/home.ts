@@ -12,6 +12,7 @@ RestItems: any[];
     // This array will be filled by the backend API, in here i am going to make an API call and i will get this json in return
     this.RestItems = [
       {
+        id: 1,
         Restaurant: {
           avatar: 'assets/img/das.jpg',
           name: 'Crepelicious'
@@ -24,6 +25,7 @@ RestItems: any[];
         They have some REALLY AMAZING delicious stuff.`,
       },
       {
+        id:2,
         Restaurant: {
           avatar: 'assets/img/das.jpg',
           name: 'Crepelicious'
@@ -35,6 +37,7 @@ RestItems: any[];
         bestReview: 'This place was amazing, they serve the most delicious crepes of all time.',
       },
       {
+        id:3,
         Restaurant: {
           avatar: 'assets/img/das.jpg',
           name: 'Crepelicious'

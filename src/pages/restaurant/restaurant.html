@@ -1,0 +1,116 @@
+<!--
+  Generated template for the RestaurantPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header showWhen="ios" color = blue>
+  <ion-navbar color = light>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+   <ion-slides style='max-height:50%;'>
+      <ion-slide>
+         <img style="filter:blur(1px)"[src]='Restaurant[0].Image'>
+      </ion-slide>
+      <ion-slide>
+         <img style="filter:blur(1px)"[src]='Restaurant[0].Image'>        
+      </ion-slide>
+   </ion-slides>
+     <h3  padding-left style='margin-top:-10%; z-index:1; position: absolute;'>{{Restaurant[0].Name}}</h3>
+   <div padding>
+      <ion-segment [(ngModel)]="Stuff">
+      <ion-segment-button value="Reviews">
+         Reviews
+      </ion-segment-button>
+      <ion-segment-button value="Menu">
+         Menu
+      </ion-segment-button>
+      <ion-segment-button value="information">
+         Information
+      </ion-segment-button>
+      </ion-segment>
+   </div>
+   <div [ngSwitch]="Stuff">
+      <div *ngSwitchCase="'Reviews'">
+         <div *ngFor="let item of Reviews">
+            <ion-card>
+               <ion-item>
+                  <ion-avatar  item-start>
+                     <img class ='profilepicsize' [src]='item.Avatar'>
+                  </ion-avatar>
+                  <h2>{{item.name}}</h2>
+               </ion-item>
+               <ion-card-content>
+                  <p>{{item.Review}}</p>
+               </ion-card-content>
+               <ion-row>
+                  <ion-col>
+                     <button ion-button color="dark" icon-left clear >
+                        <ion-icon ios="md-thumbs-up" md="md-thumbs-up"></ion-icon>
+                        <ion-note>
+                           {{item.likes}}
+                        </ion-note>
+                     </button>
+                  </ion-col>
+                  <ion-col>
+                     <button ion-button color="dark" icon-left clear>
+                        <ion-icon ios="md-chatboxes" md="md-chatboxes"></ion-icon>
+                        <ion-note>
+                           {{item.CommentNum}}
+                        </ion-note>
+                     </button>
+                  </ion-col>
+                  <ion-col style='margin-top:5%'>
+                     <ion-note>
+                        11h ago
+                     </ion-note>
+                  </ion-col>
+               </ion-row>
+            </ion-card>
+         </div>
+      </div>
+      <div *ngSwitchCase ="'Menu'">
+        <ion-card>
+        <ion-item-group>
+           <div *ngFor="let item of MenuTypes"> 
+             <ion-item-divider color="light">{{item}}</ion-item-divider>
+              <div *ngFor = "let menuItem of Restaurant[0].Menu[item]">
+                <ion-item>
+                  <p>{{menuItem.Name}}</p> 
+                  <p float-right>{{menuItem.Price}}</p>
+                </ion-item>
+              </div>
+             </div> 
+         </ion-item-group>
+        </ion-card> 
+      </div>
+       <div *ngSwitchCase ="'information'">
+         <ion-card>
+        <ion-list no-lines>
+          <ion-item  text-wrap>
+                  <h2 style="font-weight:bold">Description</h2>  
+               <ion-icon name="document" item-start ></ion-icon>
+                   {{Restaurant[0].DescriptionText}}
+              </ion-item>
+              <ion-item>
+                <h2 style="font-weight:bold">Address</h2>
+               <ion-icon name="compass" item-start></ion-icon>
+                   {{Restaurant[0].StreetAddress}}
+                   <br>
+                   {{Restaurant[0].District}},{{Restaurant[0].Governorate}}
+              </ion-item>
+             <ion-item>
+               <h2 style="font-weight:bold">Phone</h2>
+               <ion-icon name="call" item-start></ion-icon>
+                   {{Restaurant[0].Telephone}}
+              </ion-item>
+              <ion-item>
+                <h2 style="font-weight:bold">Website</h2>
+               <ion-icon name="link" item-start></ion-icon>
+                   {{Restaurant[0].Links}}
+              </ion-item>
+        </ion-list></ion-card>
+      </div>
+   </div>
+</ion-content>

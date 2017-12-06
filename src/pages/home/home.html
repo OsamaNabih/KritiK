@@ -41,27 +41,32 @@
             </ion-col>
         </ion-row>
     </ion-grid>
-    <div style='background-color: #f6f6f6'>
+    <div>
         <!-- the background color is a little darker than the default white -->
         <div *ngFor="let item of RestItems">
+            <ion-card>
             <!-- RestItems is going to be an array with all the Restaurant/cafe/space/cinema basic information, like location, name, rating and maybe the best review -->
             <!-- *ngFor is a for loop on the array items-->
-            <ion-item style='margin-bottom:-2%; background-color: #f6f6f6'>
+            <ion-item style='margin-bottom:-2%;'>
                 <img style='width:80px; height:80px; margin-right:10px; float:left;' [src]="item.Restaurant.avatar"> <!-- i want the picture to float left and the location to float right -->
                 <div style='margin-left:5%;'>
                     <h2>{{item.Restaurant.name}}</h2>
                     <p>{{item.Stars}}</p>
                 </div>
+                <div class="item-text-wrap">
                 <p style='float:right; margin-top:-5%;'> {{item.Region}}
                     <br>
                     {{item.Address}}
                     <br>
                     {{item.PhoneNumber}}
                 </p>
+                </div>
             </ion-item>
+
             <div class="item item-text-wrap" padding-left>
                 <p> {{item.bestReview}} </p>
             </div>
+            </ion-card>
         </div>
     </div>
 </ion-content>
