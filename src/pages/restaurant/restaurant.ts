@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { ReviewPage } from '../review/review';
+import { CommentsPage } from '../comments/comments';
 /**
  * Generated class for the RestaurantPage page.
  *
@@ -18,10 +19,23 @@ export class RestaurantPage {
     Restaurant: any[];
     MenuTypes: string[];
     Stuff: string;
+    UserId: number;
+    PlaceId: number;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    try{
+      console.log(navParams);
+      this.UserId = 1;
+      this.PlaceId = navParams.get('PlaceId'); 
+       console.log(this.PlaceId);
+    }
+      catch(err) 
+  {
+      console.log(err);
+  }  
     this.Stuff = "Reviews";
      this.Restaurant =
     [{
+    id: 1,
     Name: 'cilantro',
     Placetype: '1',
     Rating: '5',
@@ -62,24 +76,12 @@ export class RestaurantPage {
       Image: "assets/img/das.jpg"
     }];
     this.MenuTypes = Object.keys(this.Restaurant[0].Menu);
-    console.log(this.MenuTypes);
     this.Reviews = [
       {
         id: 1,
         name: "Omar Wagih",
         Avatar: "assets/img/ian-avatar.png",
         Review: "I had the most amazing time here, the pasta was really good, the staff were friendly, over all such an amazing experience!",
-        comments:
-          [{
-              name: "Walid Ashraf",
-              Avatar: "assets/img/ian-avatar.png",
-              Review: "Such a liar, this place sucks."
-          },
-          {
-            name: "Osama Nabih",
-              Avatar: "assets/img/ian-avatar.png",
-              Review: "Well fuck you and fuck your opinions"
-          }],
           likes: 32,
           CommentNum: 2
 
@@ -89,17 +91,6 @@ export class RestaurantPage {
         name: "Omar Wagih",
         Avatar: "assets/img/ian-avatar.png",
         Review: "I had the most amazing time here, the pasta was really good, the staff were friendly, over all such an amazing experience!",
-        comments:
-          [{
-              name: "Walid Ashraf",
-              Avatar: "assets/img/ian-avatar.png",
-              Review: "Such a liar, this place sucks."
-          },
-          {
-            name: "Osama Nabih",
-              Avatar: "assets/img/ian-avatar.png",
-              Review: "Well fuck you and fuck your opinions"
-          }],
           likes: 32,
           CommentNum: 2
       },
@@ -108,17 +99,6 @@ export class RestaurantPage {
         name: "Omar Wagih",
         Avatar: "assets/img/ian-avatar.png",
         Review: "I had the most amazing time here, the pasta was really good, the staff were friendly, over all such an amazing experience!",
-        comments:
-          [{
-              name: "Walid Ashraf",
-              Avatar: "assets/img/ian-avatar.png",
-              Review: "Such a liar, this place sucks."
-          },
-          {
-            name: "Osama Nabih",
-              Avatar: "assets/img/ian-avatar.png",
-              Review: "Well fuck you and fuck your opinions"
-          }],
           likes: 32,
           CommentNum: 2
       }
@@ -129,5 +109,20 @@ export class RestaurantPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad RestaurantPage');
   }
+openAddPager(){
+    this.navCtrl.push(ReviewPage,{
+      PlaceId: this.PlaceId,
+      UserId: this.UserId,
+      Name: this.Restaurant[0].Name,
+      Image: this.Restaurant[0].Image
+    })
+}
+GoComment(item:number)
+{
+  this.navCtrl.push(CommentsPage,{
+      ReviewId: item,
+      PageId: this.Restaurant[0].id
+    });
+}
 
 }
