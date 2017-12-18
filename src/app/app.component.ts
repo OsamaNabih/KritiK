@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { LoginsPage } from '../pages/logins/logins';
 import { AddBusinessPage } from '../pages/add-business/add-business';
 import {RestaurantPage} from '../pages/restaurant/restaurant'
 @Component({
@@ -11,7 +12,7 @@ import {RestaurantPage} from '../pages/restaurant/restaurant'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage:any = HomePage;
+  rootPage:any = LoginsPage;
 pages: Array<{title: string, component: any}>;
   constructor(public platform: Platform,public statusBar: StatusBar,public splashScreen: SplashScreen) {
     this.pages = [

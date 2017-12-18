@@ -14,21 +14,51 @@
 
 </ion-header>
 
+<ion-content class='MediumGrey' padding>
+  <div  class='MediumGrey'>
+    <form [formGroup]="Form1">
+    <ion-item >
+    <ion-label floating >Place Name</ion-label>
+    <ion-input type="text" formControlName="Name"  [(ngModel)]="Name"></ion-input>
+  </ion-item>
+      <ion-item *ngIf="!Form1.controls.Name.valid  && SubmitAttempt">
+    <p>Please enter a valid Name.</p>
+    </ion-item>
+  <ion-item >
+    <ion-label floating  >Telephone</ion-label>
+    <ion-input type="text"  formControlName="Telephone" [(ngModel)]="Telephone"></ion-input>
+  </ion-item> 
+    <ion-item class="item item-text-wrap" *ngIf="!Form1.controls.Telephone.valid  && SubmitAttempt">
+    <p>Please enter a valid number.</p>
+    </ion-item>
+  <ion-item>
+    <ion-label floating >Website</ion-label>
+    <ion-input type="text" formControlName="Website"  [(ngModel)]="Website"></ion-input>
+  </ion-item>
 
-<ion-content>
-  <ion-content>
-    <ion-item-group>
-      <ion-item-divider color="light">Required Information</ion-item-divider>
-        <ion-item>Name</ion-item>
-        <ion-item>Address</ion-item>
-        <ion-item>Restaurants</ion-item>
-      <ion-item-divider color="light">Optional Details</ion-item-divider>
-        <ion-item>Hours</ion-item>
-        <ion-item>Phone</ion-item>
-        <ion-item>Website</ion-item>
-    </ion-item-group>
+  <ion-item >
+    <ion-label floating >Street Address</ion-label>
+    <ion-input type="text" formControlName="Street" [(ngModel)]="Street"></ion-input>
+  </ion-item> 
+    <ion-item>
+     <ion-label>District</ion-label>
+  <ion-select [(ngModel)]="District" [ngModelOptions]="{standalone:true}">
+    <div *ngFor="let item of Districts">
+    <ion-option value="{{item}}">{{item}}</ion-option>
+    </div>
+  </ion-select>
+   </ion-item>
+   
+    <ion-item >
+    <ion-label floating >Description</ion-label>
+    <ion-input type="text" formControlName="Description" [(ngModel)]="Description"></ion-input>
+  </ion-item> 
 
-</ion-content>
-
-
+  <ion-item >
+    <ion-label floating >Legal Proof (Picture Urls of ownership proof)</ion-label>
+    <ion-input type="text" formControlName="Proof" [(ngModel)]="Proof"></ion-input>
+  </ion-item> 
+    </form>
+  </div>
+  <button ion-button full  (click)="Register()" clear>Submit</button>
 </ion-content>

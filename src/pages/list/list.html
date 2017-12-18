@@ -16,8 +16,6 @@
  <ion-list>
       <div *ngFor="let item of items">
            <ion-card (click)="openAddPage(item.id)">
-            <!-- RestItems is going to be an array with all the Restaurant/cafe/space/cinema basic information, like location, name, rating and maybe the best review -->
-            <!-- *ngFor is a for loop on the array items-->
             <ion-item no-padding>
                 <img style='width:30%; height:30%; margin-left:2%; margin-right:10px; float:left;' [src]="item.Restaurant.avatar"> <!-- i want the picture to float left and the location to float right -->
                 <div style='margin-left:5%;'>

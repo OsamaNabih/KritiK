@@ -11,13 +11,13 @@
 <ion-content  style='margin-top:0;background-color:#f3f3f3' fullscreen="true">
 	<ion-slides style='max-height:50%;'>
 		<ion-slide>
-			<img style="filter:blur(1px)"[src]='Restaurant[0].Image'>
+			<img style="filter:blur(1px)"[src]='Restaurant["Image"]'>
 		</ion-slide>
 		<ion-slide>
-			<img style="filter:blur(1px)"[src]='Restaurant[0].Image'>        
+			<img style="filter:blur(1px)"[src]='Restaurant["Image"]'>        
 		</ion-slide>
 	</ion-slides>
-	<h3  padding-left style='margin-top:-10%; z-index:1; position: absolute;'>{{Restaurant[0].Name}}</h3>
+	<h3  padding-left style='color:antiquewhite; margin-top:-10%; z-index:1; position: absolute;'>{{Restaurant['Name']}}</h3>
 	<div padding>
 		<ion-segment [(ngModel)]="Stuff">
 		<ion-segment-button value="Reviews">
@@ -71,14 +71,31 @@
 			</div>
 		</div>
 		<div *ngSwitchCase ="'Menu'">
-			<ion-card>
+			 
+			<ion-card *ngIf="Restaurant.Menu !== undefined">
 				<ion-item-group>
 					<div *ngFor="let item of MenuTypes">
 						<ion-item-divider color="light">{{item}}</ion-item-divider>
-						<div *ngFor = "let menuItem of Restaurant[0].Menu[item]">
+						<div *ngFor = "let menuItem of Restaurant.Menu[item]">
 							<ion-item>
-								<p>{{menuItem.Name}}</p>
-								<p float-right>{{menuItem.Price}}</p>
+								<p>{{menuItem.ItemName}}</p>
+								<p float-right>{{menuItem.ItemPrice}}</p>
+							</ion-item>
+						</div>
+					</div>
+				</ion-item-group>
+			</ion-card>
+			<ion-card *ngIf="Restaurant.Cinema !== undefined">
+				<ion-item-group>
+					<div *ngFor="let item of Restaurant.Cinema">
+						<ion-item-divider color="light">{{item.ShowTimeNumber}}</ion-item-divider>
+						<div *ngFor = "let items of item">
+							<ion-item>
+								<p>{{items.FilmName}}</p>
+								<p float-right>{{items.Price}}
+									<br>
+									3D: {{items.ThreeD}}
+								</p>
 							</ion-item>
 						</div>
 					</div>
@@ -91,24 +108,24 @@
 					<ion-item  text-wrap>
 						<h2 style="font-weight:bold">Description</h2>
 						<ion-icon name="document" item-start ></ion-icon>
-						{{Restaurant[0].DescriptionText}}
+						{{Restaurant['DescriptionText']}}
 					</ion-item>
 					<ion-item>
 						<h2 style="font-weight:bold">Address</h2>
 						<ion-icon name="compass" item-start></ion-icon>
-						{{Restaurant[0].StreetAddress}}
+						{{Restaurant['StreetAddress']}}
 						<br>
-						{{Restaurant[0].District}},{{Restaurant[0].Governorate}}
+						{{Restaurant['District']}},{{Restaurant['Governorate']}}
 					</ion-item>
 					<ion-item>
 						<h2 style="font-weight:bold">Phone</h2>
 						<ion-icon name="call" item-start></ion-icon>
-						{{Restaurant[0].Telephone}}
+						{{Restaurant['Telephone']}}
 					</ion-item>
 					<ion-item>
 						<h2 style="font-weight:bold">Website</h2>
 						<ion-icon name="link" item-start></ion-icon>
-						{{Restaurant[0].Links}}
+						{{Restaurant['Links']}}
 					</ion-item>
 				</ion-list>
 			</ion-card>

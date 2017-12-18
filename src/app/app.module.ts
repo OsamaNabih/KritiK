@@ -4,12 +4,15 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
+import {HttpModule} from '@angular/http'
 import { HomePage } from '../pages/home/home';
 import { HideHeaderDirective } from '../directives/headerscroll/headerscroll';
 import { AddBusinessPage } from '../pages/add-business/add-business';
 import {RestaurantPage} from '../pages/restaurant/restaurant';
 import { ReviewPage } from '../pages/review/review';
 import { CommentsPage } from '../pages/comments/comments';
+import { LoginsPage } from '../pages/logins/logins';
+import { RegisterPage } from '../pages/register/register';
 import { ListPage } from '../pages/list/list';
 import { ElasticModule } from 'angular2-elastic';
 @NgModule({
@@ -22,11 +25,14 @@ import { ElasticModule } from 'angular2-elastic';
     RestaurantPage,
     ReviewPage,
     ListPage,
-    CommentsPage
+    CommentsPage,
+    LoginsPage,
+    RegisterPage
   ],
   imports: [
     BrowserModule,
     ElasticModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -38,7 +44,9 @@ import { ElasticModule } from 'angular2-elastic';
     RestaurantPage,
     ReviewPage,
     ListPage,
-    CommentsPage
+    CommentsPage,
+    LoginsPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,

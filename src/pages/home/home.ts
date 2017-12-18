@@ -83,8 +83,9 @@ RestItems: any[];
     })
   }
    openListPage(Type:number) {
+     console.log(Type);
     this.navCtrl.push(ListPage,{
-      PlaceId: Type
+      type: Type
     })
   }
 }
